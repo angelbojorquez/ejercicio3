@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GESTION DE CURSOS</title>
+    </head>
+    <body>
+        <h1>AGREGAR CURSO</h1>
+
+        <form id="formulariocurso">
+
+            <input type="tex" id="addcurso" name="">
+            
+            <button type="submit">
+
+                GUARDAR
+
+            </button>
+
+        </form>
+
+        <h3>
+            CURSOS
+        </h3>
+        <div id="Cursos">
+
+            <ul id="listadeCursos">
+
+            </ul>  
+        </div>
+
+
+        <h2>ELIMINAR CURSO</h2>
+
+        <form id="FormBorrar">
+
+            <input type="tex" id="eliminarcurso" name="">
+            
+            <button type="submit">
+
+                ELIMINAR 
+
+            </button>
+
+        </form>
+
+        <script>
+            'use strict'
+           var formulario = document.getElementById("formulariocurso") 
+
+            formulario.addEventListener('submit', function(){
+
+            var TituloCurso = document.getElementById("addcurso").value;
+
+            if(TituloCurso.length >= 1){
+
+              localStorage.setItem(TituloCurso, TituloCurso);  
+            }
+
+            });
+            var ul = document.getElementById("listadeCursos")
+
+            for ( var i in localStorage){
+
+                console.log(localStorage[i]);
+
+                if(typeof localStorage[i] == "string"){
+
+                    var li = document.createElement("li")
+                    li.append(localStorage[i])
+                    ul.append(li)
+                }
+
+            }
+
+            var FormularioBorrar = document.getElementById("FormBorrar")  
+
+            FormularioBorrar.addEventListener('submit', function(){
+
+            var BorrarCurso = document.getElementById("eliminarcurso").value;
+
+            if(BorrarCurso.length >=1){
+
+                localStorage.removeItem(BorrarCurso)
+            }
+
+            })
+
+        </script>
+
+
+
+    </body>
+</html>
